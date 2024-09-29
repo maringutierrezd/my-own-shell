@@ -8,7 +8,7 @@
 #include "builtin-commands.h"
 
 
-int execute(char** args) {
+int execute_line(char** args) {
     // Variable declaration
     int i;
 
