@@ -34,8 +34,8 @@ int launch(char** args) {
     pid = fork();
     if (pid == 0) {
         // Child process
-        int exec = execvp(args[0], args);
-        if (exec == -1) {
+        int exec_ret = execvp(args[0], args);
+        if (exec_ret == -1) {
             perror("dsh");
         }
         exit(EXIT_FAILURE);  // Not sure if this is necessary after checking if exec == -1, but adding it just to ensure that the child process should not reach this point
