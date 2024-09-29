@@ -4,6 +4,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+#include "builtin-commands.h"
+
 
 int launch(char** args) {
     // Variable declaration
