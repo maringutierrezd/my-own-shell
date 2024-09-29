@@ -1,11 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 
 #include "builtin-commands.h"
 
+
+int execute(char** args) {
+    // Variable declaration
+    int i;
+
+    if (args[0] == NULL) {
+        // If an empty command was given
+        return 1;
+    }
+
+    for (i = 0; i < N_builtins(); i++) {
+        if (strcmp(args[0], builtin_str[i]) == 0) {
+            return (*builtin_func[i])(args);
+        }
+    }
+
+    return launch(args);
+}
 
 int launch(char** args) {
     // Variable declaration
