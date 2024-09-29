@@ -1,2 +1,2 @@
 # my-own-shell
-Creating my own Shell in C
+Creating my own, very simplifieed Shell in C: DummyShell (dsh)
