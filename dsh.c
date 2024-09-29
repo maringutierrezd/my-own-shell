@@ -1,6 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
+
+int launch(char** args) {
+    // Variable declaration
+    pid_t pid, wpid;
+    int status;
+
+    pid = fork();
+    if (pid == 0) {
+        // Child process
+        int exec = execvp(args[0], args);
+        if (exec == -1) {
+            perror("dsh");
+        }
+        exit(EXIT_FAILURE);  // Not sure if this is necessary after checking if exec == -1, but adding it just to ensure that the child process should not reach this point
+    }
+    else if (pid < 0) {
+        perror("dsh");
+    }
+    else {
+        // Parent process (the dsh)
+        do {
+            wpid = waitpid(pid, &status, WUNTRACED);
+        } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+    }
+    return 1;
+}
 
 #define TOK_BUFSIZE 64
 #define TOK_DELIM " \t\r\n\a"
