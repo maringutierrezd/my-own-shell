@@ -4,11 +4,13 @@
 #include "builtin-commands.h"
 
 char* builtin_str[] = {
-    "cd"
+    "cd",
+    "exit"
 };
 
 int (*builtin_func[]) (char**) = {
     &dsh_cd,
+    &dsh_exit
 };
 
 int N_builtins(void) {
@@ -28,4 +30,8 @@ int dsh_cd(char** args) {
         }
     }
     return 1;
+}
+
+int dsh_exit(char** args) {
+    return 0;  // Simply return 0 to make the do-while condition of the dsh_loop false. Exit regardless of arguments
 }

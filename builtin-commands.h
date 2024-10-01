@@ -6,5 +6,6 @@ extern int (*builtin_func[]) (char **);
 int N_builtins(void);
 
 int dsh_cd(char** args);
+int dsh_exit(char** args);
 
 #endif
