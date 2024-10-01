@@ -8,7 +8,7 @@ char* builtin_str[] = {
 };
 
 int (*builtin_func[]) (char**) = {
-  &dsh_cd,
+    &dsh_cd,
 };
 
 int N_builtins(void) {
