@@ -16,5 +16,5 @@ Creating my own, very simplified Shell in C: DummyShell (dsh)
  * cd
  * exit
 
-# Howto run
+# How to run
 Use `make` to compile and `./dsh` to run.
